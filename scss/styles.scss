@@ -1,3 +1,8 @@
+// Define variables
+$primary: #2BAD9B;
+$navHeight: 70px;
+
+// Mixin for positioning
 @mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
   position: $position;
   top: $top;
@@ -6,213 +11,88 @@
   left: $left;
 }
 
-$primary: #2BAD9B;
+// Global styles
+html, body {
+  height: 100%;
+  overflow: hidden; // Hide default scrollbar
+}
 
 body {
   margin: 0;
-  font-family: 'Open Sans';
   overflow-x: hidden;
   background: $primary;
-  height: 100vh;
 }
 
-.acc {
-  /* Force Hardware Acceleration */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-#wrapper {
+// Scroll container required for Locomotive Scroll
+[data-scroll-container] {
   position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  /* Add the standard property */
-  -ms-touch-action: none; /* For old Internet Explorer support */
-  touch-action: none; /* Standard property for modern browsers */
-  
 }
 
-.flex-center {
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.info {
-  color: #fff;
-  z-index: 2;
-  font-size: 10pt;
-  text-align: center;
-  max-width: 400px;
-  padding: 0 10px;
-  transition: opacity .1s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-
-  .title {
-    font-size: 16pt;
-  }
-
-  .circle {
-    background: url('https://image.ibb.co/cPnfpv/avatar.jpg') center center/cover no-repeat;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-}
-
+// Navbar styles
 .navbar {
-  @include position(absolute, $top: 0, $left: 0);
-  color: #fff;
-  height: 70px;
+  height: $navHeight;
   width: 100%;
-  z-index: 3;
-  flex-direction: row;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 1;
   background: $primary;
 
+  // Background element within the navbar
   .bg {
     @include position(absolute, $top: 0, $left: 0);
-    background: $primary;
+    transform: translate3d(0, 0, 0);
+    background: #0FB5BD;
     height: 100%;
     width: 100%;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  
-  .title {
-    position: relative;
-    z-index: 3;
-    font-size: 20pt;
-    font-family: 'Mr Dafoe'
-  }
-
-  .fa {
-    position: relative;
-    z-index: 3;
-    font-size: 20pt;
-    margin: 0 20px;
-    cursor: pointer;
   }
 
   &.fixed {
+    @include position(fixed, $top: 0, $left: 0);
     display: none;
-    top: 70px;
+    z-index: 10;
   }
 
   &.menu {
-    background: transparent;
-    transition: opacity .1s;
-    z-index: 4;
-  }
-}
-
-.upper {
-  @include position(absolute, $top: 0, $left: 0);
-
-  .slide-wrapper {
-    height: 430px;
-    width: 100vw;
-    position: relative;
-  }
-
-  .mask {
     @include position(absolute, $top: 0, $left: 0);
-    background: rgba(0,0,0,0.3);
-    height: 100%;
-    width: 100%;
+    background: transparent;
+    transition: opacity 0.1s;
     z-index: 1;
   }
+}
 
-  .img {
-    @include position(absolute, $top: 0, $left: 0);
-    background: url('https://image.ibb.co/mdSD9v/moto.jpg') 60% center/cover no-repeat;
-    width: 100%;
-    height: 430px;
-
-    &.blurred {
-      opacity: 0;
-      background: url('https://image.ibb.co/d2aBwa/moto_blur.jpg') 60% center/cover no-repeat;
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-  }
+// Upper section (hero section)
+.upper {
+  position: relative;
+  background: #333;
+  height: 500px;
+  width: 100%;
 
   &.crop {
-    z-index: 3;
-    height: 70px;
-    overflow: hidden;
+    z-index: 1;
+    height: $navHeight;
   }
 }
 
+// Lower section (main content)
 .lower {
-  top: calc(430px - 70px);
-  width: 100vw;
   position: relative;
   padding: 80px 0 0 0;
   background: #fff;
-  flex-direction: column;
-  display: flex;
-  justify-content: start;
-  align-items: center;
 
+  // Nested navbar within the lower section
+  .navbar {
+    // Add styles for the navbar inside lower if needed
+  }
+
+  // Square elements
   .square {
     height: 200px;
     width: 200px;
-    margin: 30px 0;
-    text-transform: uppercase;
-    color: #fff;
+    margin: 35px auto;
 
-    &:nth-child(odd) { background: #2B77AD }
-
-    &:nth-child(even) { background: #35BAD0 }
-  }
-}
-
-@media screen and (min-width: 600px) {
-  
-  body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    overflow-x: hidden;
-    background: #2BAD9B;
-    height: 100vh;
-    /* Add vendor prefixes */
-    -webkit-text-size-adjust: none; /* For Safari */
-    -ms-text-size-adjust: none; /* For Internet Explorer */
-    text-size-adjust: none; /* Standard property */
-  }
-  
-  .upper {
-    .slide-wrapper, .img {
-      height: 480px;
+    &:nth-child(odd) {
+      background: #2B77AD;
     }
-  }
-
-  .lower {
-    top: calc(480px - 70px);
-    width: 100%;
-  }
-
-  .shell {
-    background: url('https://image.ibb.co/hipoba/iphone.png') center center/cover no-repeat;
-    padding: 100px 80px 120px 70px;
-  }
-
-  .screen {
-    height: 550px;
-    overflow: hidden;
-    background: $primary;
-    position: relative;
-  }
-
-  .upper .slide-wrapper, .screen {
-    width: 300px;
+    &:nth-child(even) {
+      background: #35BAD0;
+    }
   }
 }

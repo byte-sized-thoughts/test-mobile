@@ -1,160 +1,91 @@
 body {
   margin: 0;
-  font-family: "Open Sans";
   overflow-x: hidden;
   background: #2BAD9B;
   height: 100vh;
 }
 
-.acc {
-  /* Force Hardware Acceleration */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+/* Required for Locomotive Scroll */
+[data-scroll-container] {
+  overflow: hidden;
 }
 
+[data-scroll-section] {
+  position: relative;
+  width: 100%;
+}
+
+/* Wrapper */
 #wrapper {
   position: relative;
-  z-index: 2;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-  /* Add the standard property */
-  -ms-touch-action: none; /* For old Internet Explorer support */
-  touch-action: none; /* Standard property for modern browsers */
 }
 
-.flex-center {
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.info {
-  color: #fff;
-  z-index: 2;
-  font-size: 10pt;
-  text-align: center;
-  max-width: 400px;
-  padding: 0 10px;
-  transition: opacity 0.1s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.info .title {
-  font-size: 16pt;
-}
-.info .circle {
-  background: url("https://image.ibb.co/cPnfpv/avatar.jpg") center center/cover no-repeat;
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
+/* Navbar */
 .navbar {
   position: absolute;
   top: 0;
   left: 0;
-  color: #fff;
   height: 70px;
   width: 100%;
-  z-index: 3;
-  flex-direction: row;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 1;
   background: #2BAD9B;
 }
 .navbar .bg {
   position: absolute;
   top: 0;
   left: 0;
-  background: #2BAD9B;
+  transform: translate3d(0, 0, 0);
+  background: #0FB5BD;
   height: 100%;
   width: 100%;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.navbar .title {
-  position: relative;
-  z-index: 3;
-  font-size: 20pt;
-  font-family: "Mr Dafoe";
-}
-.navbar .fa {
-  position: relative;
-  z-index: 3;
-  font-size: 20pt;
-  margin: 0 20px;
-  cursor: pointer;
 }
 .navbar.fixed {
-  display: none;
-  top: 70px;
+  display: none; /* Initially hidden, becomes visible when sticky */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: #2BAD9B;
+  z-index: 10;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  transition: opacity 0.3s ease;
 }
 .navbar.menu {
   background: transparent;
-  transition: opacity 0.1s;
-  z-index: 4;
+  transition: opacity 0.1s ease;
+  z-index: 1;
 }
 
+/* Upper Section */
 .upper {
   position: absolute;
   top: 0;
   left: 0;
-}
-.upper .slide-wrapper {
-  height: 430px;
-  width: 100vw;
-  position: relative;
-}
-.upper .mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-  height: 100%;
+  background: #333;
+  height: 500px;
   width: 100%;
-  z-index: 1;
-}
-.upper .img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url("https://image.ibb.co/mdSD9v/moto.jpg") 60% center/cover no-repeat;
-  width: 100%;
-  height: 430px;
-}
-.upper .img.blurred {
-  opacity: 0;
-  background: url("https://image.ibb.co/d2aBwa/moto_blur.jpg") 60% center/cover no-repeat;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  transition: height 0.3s;
 }
 .upper.crop {
-  z-index: 3;
-  height: 70px;
-  overflow: hidden;
+  z-index: 1;
+  height: 70px; /* Shrinks when sticky navbar is shown */
 }
 
+/* Lower Section */
 .lower {
-  top: 360px;
-  width: 100vw;
+  top: calc(500px - 70px); /* Adjusted calculation */
   position: relative;
   padding: 80px 0 0 0;
   background: #fff;
-  flex-direction: column;
-  display: flex;
-  justify-content: start;
-  align-items: center;
 }
 .lower .square {
   height: 200px;
   width: 200px;
-  margin: 30px 0;
-  text-transform: uppercase;
-  color: #fff;
+  margin: 35px auto;
 }
 .lower .square:nth-child(odd) {
   background: #2B77AD;
@@ -163,38 +94,9 @@ body {
   background: #35BAD0;
 }
 
-@media screen and (min-width: 600px) {
-  body {
-    margin: 0;
-    font-family: "Open Sans", sans-serif;
-    overflow-x: hidden;
-    background: #2BAD9B;
-    height: 100vh;
-    /* Add vendor prefixes */
-    -webkit-text-size-adjust: none; /* For Safari */
-    -ms-text-size-adjust: none; /* For Internet Explorer */
-    text-size-adjust: none; /* Standard property */
-  }
-  .upper .slide-wrapper, .upper .img {
-    height: 480px;
-  }
-  .lower {
-    top: 410px;
-    width: 100%;
-  }
-  .shell {
-    background: url("https://image.ibb.co/hipoba/iphone.png") center center/cover no-repeat;
-    padding: 100px 80px 120px 70px;
-  }
-  .screen {
-    height: 550px;
-    overflow: hidden;
-    background: #2BAD9B;
-    position: relative;
-  }
-  .upper .slide-wrapper, .screen {
-    width: 300px;
-  }
+/* Additional styling for smooth transitions */
+.bg, .info, .blurred {
+  transition: opacity 0.3s ease;
 }
 
 /*# sourceMappingURL=styles.css.map */

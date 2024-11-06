@@ -1,59 +1,42 @@
-var myScroll, upper, menu, lowerNav, menuHeight, upperHeight;
-
-function loaded () {
-  var lowerHeight = $('.lower').height();
-
-  stickyInit();
-
-  myScroll = new IScroll('#wrapper', {
-    mouseWheel: true,
-    probeType: 3,
-    mouseWheelSpeed: 5
+document.addEventListener("DOMContentLoaded", function() {
+  // Initialize Locomotive Scroll
+  const scroll = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true
   });
 
-  function stickyInit() {
-    upper = $('.upper');
-    menu = $('.navbar.menu');
-    lowerNav = $('.lower .navbar');
-    fixedNav = $('.navbar.fixed');
-    menuHeight = menu.height();
-    upperHeight = upper.height() - menuHeight;
-    $('.lower').css('height', upperHeight + lowerHeight + 200 + 'px');
+  // Elements
+  const upper = document.querySelector('.upper');
+  const lowerNav = document.querySelector('.lower .navbar');
+  const fixedNav = document.querySelector('.navbar.fixed');
+  const menu = document.querySelector('.navbar.menu');
+  const bg = document.querySelector('.bg');
+  const menuHeight = menu.offsetHeight;
+  const upperHeight = upper.offsetHeight - menuHeight;
 
-    stickyNav();
-  }
+  // Scroll Event
+  scroll.on('scroll', (instance) => {
+    const scrollTop = instance.scroll.y;
 
-  function stickyNav() {
-    if (this.y > 0) return;
-    var scrollTop = Math.abs(this.y);
-
-    var scrollRatio = scrollTop / upperHeight;
+    let scrollRatio = scrollTop / upperHeight;
     if (scrollRatio > 1) scrollRatio = 1;
 
     if (scrollTop > upperHeight - menuHeight) {
-      upper.addClass('crop');
-      lowerNav.hide();
-      fixedNav.css('display','flex');
+      upper.classList.add('crop');
+      lowerNav.style.display = 'none';
+      fixedNav.style.display = 'block';
     } else {
-      upper.removeClass('crop');
-      lowerNav.show();
-      fixedNav.hide();
+      upper.classList.remove('crop');
+      lowerNav.style.display = 'block';
+      fixedNav.style.display = 'none';
     }
 
-    $('.bg').css('opacity', 1 - scrollRatio * 1.3); 
-    $('.info').css('opacity', 1 - scrollRatio * 1.3); 
-    $('.blurred').css('opacity', scrollRatio * 2); 
-  }
-
-  myScroll.on('scroll', stickyNav);
-  myScroll.on('scrollEnd', stickyNav);
-
-  $(window).resize(function(){
-    myScroll.refresh();
-    stickyInit();
+    // Adjust background opacity
+    bg.style.opacity = 1 - scrollRatio * 1.3;
   });
 
-  
-}
-
-document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+  // Refresh on window resize
+  window.addEventListener('resize', () => {
+    scroll.update();
+  });
+});

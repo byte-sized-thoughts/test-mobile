@@ -2,76 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Steffi Kohl - Academic Portfolio</title>
-    <!-- Link to the compiled CSS file in the /css folder -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Locomotive Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.css">
+    <!-- Link to your compiled CSS file -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body onload="loaded()"><body onload="loaded()" class="flex-center">
-  <div class="shell">
-    <div class="screen">
-      <div class="navbar fixed">
-        <i class="fa fa-diamond"></i>
-        <i class="fa fa-cloud-download"></i>
-        <i class="fa fa-bookmark"></i>
-        <i class="fa fa-heart"></i>
-      </div>
+<body>
+    <!-- Fixed Navbar (outside the scroll container) -->
+    <div class="navbar fixed"></div>
 
-      <div class="navbar menu">
-        <div class="bg acc"></div>
-        <i class="fa fa-gear"></i>
-        <div class="title">Sticky Nav</div>
-        <i class="fa fa-comment"></i>
-      </div>
-
-      <div class="upper">
-        <div class="slide-wrapper flex-center">
-          <div class="info flex-center acc">
-            <div class="circle"></div>
-            <div class="title">Lily's Profile</div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis pretiu.</div>
-          </div>
-
-          <div class="mask"></div>
-          <div class="img"></div>
-          <div class="img blurred acc"></div>
-
-          <div class="slide">
-            
-          </div>
+    <!-- Main Scroll Container -->
+    <div data-scroll-container>
+        <div class="navbar menu">
+            <div class="bg"></div>
         </div>
 
-      </div>
+        <!-- Hero Section -->
+        <div class="upper" data-scroll-section></div>
 
-      <div id="wrapper">
-        <div id="scroller">
-
-          <div class="lower">
-            <div class="navbar">
-              <i class="fa fa-diamond"></i>
-              <i class="fa fa-cloud-download"></i>
-              <i class="fa fa-bookmark"></i>
-              <i class="fa fa-heart"></i>
-            </div>
-            <div class="square flex-center">image #1</div>
-            <div class="square flex-center">image #2</div>
-            <div class="square flex-center">image #3</div>
-            <div class="square flex-center">image #4</div>
-            <div class="square flex-center">image #5</div>
-          </div>
-
+        <!-- Main Content Section -->
+        <div class="lower" data-scroll-section>
+            <div class="navbar"></div>
+            <!-- Squares -->
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Include jQuery (this should be linked from a CDN) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Include IScroll (ensure the correct path if you have it locally) -->
-  <script src="js/iscroll.js"></script>
-
-  <!-- Link to your JavaScript file in the /js folder -->
-  <script src="js/script.js"></script>
+    <!-- Include Locomotive Scroll JS -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"></script>
+    <!-- Link to your JavaScript file -->
+    <script src="js/script.js"></script>
 </body>
 </html>
