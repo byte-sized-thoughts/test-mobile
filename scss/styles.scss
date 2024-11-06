@@ -1,288 +1,218 @@
-/* Import Open Props */
-@import url('https://unpkg.com/open-props');
-@import url('https://unpkg.com/open-props/font-sizes.min.css');
-@import url('https://unpkg.com/open-props/font-weights.min.css');
-
-
-/* Define CSS Variables */
-:root {
-    --mint-tulip: #cbf6e7;
-    --cardinal-pink: #810273;
-    --midnight-green: #084C61;
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
 }
 
-/* Set global styles */
+$primary: #2BAD9B;
+
 body {
-    font-family: 'Font-Antique', serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--mint-tulip);
-    color: var(--midnight-green);
-    scroll-behavior: smooth;
+  margin: 0;
+  font-family: 'Open Sans';
+  overflow-x: hidden;
+  background: $primary;
+  height: 100vh;
 }
 
-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.acc {
+  /* Force Hardware Acceleration */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
-a {
-    text-decoration: none;
+#wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* Add the standard property */
+  -ms-touch-action: none; /* For old Internet Explorer support */
+  touch-action: none; /* Standard property for modern browsers */
+  
 }
 
-/* Hero Section */
-.hero-section {
-    background-color: var(--mint-tulip);
-    color: var(--midnight-green);
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh;
+.flex-center {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Hero Content */
-.hero-content {
-    position: relative;
-    width: 100%;
-    max-width: 1200px; /* Artboard width */
-    margin: 0 auto;
-    /* Maintain aspect ratio based on artboard dimensions */
-    height: 0;
-    padding-bottom: 59%; 
-}
+.info {
+  color: #fff;
+  z-index: 2;
+  font-size: 10pt;
+  text-align: center;
+  max-width: 400px;
+  padding: 0 10px;
+  transition: opacity .1s;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 
-/* Graphic Boxes */
-.graphic-boxes {
-    position: absolute;
-    left: 33.38%;
-    top: 1.2%;
-    width: 60.38%;
-    height: auto;
-    transform: translateY(var(--parallax-offset-boxes, 0)); 
-    z-index: 4;
-}
+  .title {
+    font-size: 16pt;
+  }
 
-/* Circle Left */
-.circle-left {
-    position: absolute;
-    left: 32.37%;
-    top: 5.10%;
-    width: 35.42%; /* Assuming the width remains the same */
-    height: auto;
-    transform: translateY(var(--parallax-offset-circle-left, 0)); 
-    z-index: 1;
-}
-
-/* Circle Right */
-.circle-right {
-    position: absolute;
-    left: 75.87%;
-    top: 40.77%;
-    width: 34.76%; /* Assuming the width remains the same */
-    height: auto;
-    transform: translateY(var(--parallax-offset-circle-right, 0)); 
-    z-index: 3;
-}
-
-/* Steffi's Photo */
-.profile-photo {
-    position: absolute;
-    left: 56.24%;
-    top: 12.03%;
-    width: 41.98%; 
-    height: auto;
-    z-index: 2;
-}
-
-/* Title and Subtitle */
-.hero-title {
-    position: absolute;
-    top: 40%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: var(--midnight-green);
-    font-size: 4.5rem;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 2px #1B98E0;
-    font-weight:  var(--font-weight-2);
-    font-family: 'Bagel Fat One';
-    margin: 0;
-    z-index: 5;
-}
-
-.hero-subtitle {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: var(--midnight-green);
-    font-size: var(--font-size-4); 
-    font-weight:  var(--font-weight-3);
-    font-family: 'Indie Flower';
-    margin: 0;
-    z-index: 5;
-}
-
-/* Navigation Menu */
-.main-nav {
-    background-color: var(--cardinal-pink);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Styles when scrolled past Steffi's photo */
-.main-nav.scrolled-past-photo {
-    background-color: var(--cardinal-pink); /* Adjust if you want a different color */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation Container */
-.nav-container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 100%;
-    height: 70px;
-    align-items: center;
-}
-
-/* Navigation Tabs */
-.main-nav ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex: 1;
-}
-
-.main-nav li {
-    flex: 1;
-}
-
-.nav-tab {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    letter-spacing: 0.1rem;
-    text-decoration: none;
-    height: 100%;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
-
-.nav-tab:hover {
-    color: white;
-    background: var(--midnight-green);
-}
-
-/* Navigation Tab Slider */
-.nav-tab-slider {
-    position: absolute;
-    bottom: 0;
-    height: 6px;
-    background: var(--midnight-green);
-    transition: left 0.3s ease, width 0.3s ease;
-    left: 0;
-    width: 0;
-}
-
-@media (max-width: 768px) {
-    .nav-tab {
-        font-size: 0.8rem;
-    }
-}
-
-/* Main Content Styles */
-main {
-    padding: 20px;
-    margin-top: 0;
-}
-
-h2 {
-    font-family: 'Font-Antique', serif;
-    font-weight: bold;
-    color: var(--cardinal-pink);
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-}
-
-.project-item {
-    background-color: var(--cardinal-pink);
-    color: var(--mint-tulip);
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.contact-links a,
-button {
-    color: var(--mint-tulip);
-    background-color: var(--cardinal-pink);
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-form {
-    margin-top: 10px;
-}
-
-input,
-textarea {
-    display: block;
-    width: 100%;
+  .circle {
+    background: url('https://image.ibb.co/cPnfpv/avatar.jpg') center center/cover no-repeat;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
     margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+  }
 }
 
-button {
-    border: none;
+.navbar {
+  @include position(absolute, $top: 0, $left: 0);
+  color: #fff;
+  height: 70px;
+  width: 100%;
+  z-index: 3;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $primary;
+
+  .bg {
+    @include position(absolute, $top: 0, $left: 0);
+    background: $primary;
+    height: 100%;
+    width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .title {
+    position: relative;
+    z-index: 3;
+    font-size: 20pt;
+    font-family: 'Mr Dafoe'
+  }
+
+  .fa {
+    position: relative;
+    z-index: 3;
+    font-size: 20pt;
+    margin: 0 20px;
     cursor: pointer;
+  }
+
+  &.fixed {
+    display: none;
+    top: 70px;
+  }
+
+  &.menu {
+    background: transparent;
+    transition: opacity .1s;
+    z-index: 4;
+  }
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .hero-content {
-        padding-bottom: 130%; /* Increase to accommodate content on smaller screens */
-    }
+.upper {
+  @include position(absolute, $top: 0, $left: 0);
 
-    .profile-photo {
-        width: 60%; /* Increase size for better visibility on small screens */
-        left: 80%;
-        top: 50%;
-    }
+  .slide-wrapper {
+    height: 430px;
+    width: 100vw;
+    position: relative;
+  }
 
-    .graphic-boxes,
-    .circle-left,
-    .circle-right {
-        width: 80%; /* Adjust graphic sizes */
-    }
+  .mask {
+    @include position(absolute, $top: 0, $left: 0);
+    background: rgba(0,0,0,0.3);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
 
-    .hero-title {
-        font-size: 2em;
-        top: 25%;
-        left: 5%;
-    }
+  .img {
+    @include position(absolute, $top: 0, $left: 0);
+    background: url('https://image.ibb.co/mdSD9v/moto.jpg') 60% center/cover no-repeat;
+    width: 100%;
+    height: 430px;
 
-    .hero-subtitle {
-        font-size: 1.2em;
-        top: 35%;
-        left: 5%;
+    &.blurred {
+      opacity: 0;
+      background: url('https://image.ibb.co/d2aBwa/moto_blur.jpg') 60% center/cover no-repeat;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
+  }
+
+  &.crop {
+    z-index: 3;
+    height: 70px;
+    overflow: hidden;
+  }
+}
+
+.lower {
+  top: calc(430px - 70px);
+  width: 100vw;
+  position: relative;
+  padding: 80px 0 0 0;
+  background: #fff;
+  flex-direction: column;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  .square {
+    height: 200px;
+    width: 200px;
+    margin: 30px 0;
+    text-transform: uppercase;
+    color: #fff;
+
+    &:nth-child(odd) { background: #2B77AD }
+
+    &:nth-child(even) { background: #35BAD0 }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    background: #2BAD9B;
+    height: 100vh;
+    /* Add vendor prefixes */
+    -webkit-text-size-adjust: none; /* For Safari */
+    -ms-text-size-adjust: none; /* For Internet Explorer */
+    text-size-adjust: none; /* Standard property */
+  }
+  
+  .upper {
+    .slide-wrapper, .img {
+      height: 480px;
+    }
+  }
+
+  .lower {
+    top: calc(480px - 70px);
+    width: 100%;
+  }
+
+  .shell {
+    background: url('https://image.ibb.co/hipoba/iphone.png') center center/cover no-repeat;
+    padding: 100px 80px 120px 70px;
+  }
+
+  .screen {
+    height: 550px;
+    overflow: hidden;
+    background: $primary;
+    position: relative;
+  }
+
+  .upper .slide-wrapper, .screen {
+    width: 300px;
+  }
 }

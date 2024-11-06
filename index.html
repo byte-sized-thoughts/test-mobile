@@ -4,126 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Steffi Kohl - Academic Portfolio</title>
-    <!-- Include Open Props and Font-Antique -->
-    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/open-props/buttons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/open-props/animations.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Font-Antique&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Bagel Fat One' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
-
+    <!-- Link to the compiled CSS file in the /css folder -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body onload="loaded()"><body onload="loaded()" class="flex-center">
+  <div class="shell">
+    <div class="screen">
+      <div class="navbar fixed">
+        <i class="fa fa-diamond"></i>
+        <i class="fa fa-cloud-download"></i>
+        <i class="fa fa-bookmark"></i>
+        <i class="fa fa-heart"></i>
+      </div>
 
-    <!-- Hero Section -->
-<header class="hero-section" id="hero">
-    <div class="hero-content">
-        <!-- Graphic Boxes -->
-        <picture>
-            <source srcset="assets/boxes.webp" type="image/webp">
-            <img src="assets/boxes.png" alt="Graphic Boxes" class="graphic-boxes">
-        </picture>
+      <div class="navbar menu">
+        <div class="bg acc"></div>
+        <i class="fa fa-gear"></i>
+        <div class="title">Sticky Nav</div>
+        <i class="fa fa-comment"></i>
+      </div>
 
-        <!-- Circle Left -->
-        <picture>
-            <source srcset="assets/circle-left.webp" type="image/webp">
-            <img src="assets/circle-left.png" alt="Left Circle" class="circle-left">
-        </picture>
+      <div class="upper">
+        <div class="slide-wrapper flex-center">
+          <div class="info flex-center acc">
+            <div class="circle"></div>
+            <div class="title">Lily's Profile</div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis pretiu.</div>
+          </div>
 
-        <!-- Circle Right -->
-        <picture>
-            <source srcset="assets/circle-right.webp" type="image/webp">
-            <img src="assets/circle-right.png" alt="Right Circle" class="circle-right">
-        </picture>
+          <div class="mask"></div>
+          <div class="img"></div>
+          <div class="img blurred acc"></div>
 
-        <!-- Steffi's Photo -->
-        <picture>
-            <source srcset="assets/steffi.webp" type="image/webp">
-            <img src="assets/steffi.png" alt="Dr. Steffi Kohl" class="profile-photo">
-        </picture>
-
-        <!-- Title and Subtitle -->
-        <h1 class="hero-title">Dr. Steffi Kohl</h1>
-        <p class="hero-subtitle">Researcher in Cognition & Human Data Interaction</p>
-    </div>
-</header>
-
-    <!-- Navigation Menu -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <ul>
-                <li><a class="nav-tab" href="#about">About Me</a></li>
-                <li><a class="nav-tab" href="#research">Research Focus</a></li>
-                <li><a class="nav-tab" href="#projects">Projects & Publications</a></li>
-                <li><a class="nav-tab" href="#experience">Experience</a></li>
-                <li><a class="nav-tab" href="#speaking">Speaking Engagements</a></li>
-                <li><a class="nav-tab" href="#contact">Contact</a></li>
-            </ul>
-            <span class="nav-tab-slider"></span>
+          <div class="slide">
+            
+          </div>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- About Me Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Dr. Steffi Kohl is a researcher specializing in cognition, human data interaction, and technological measurement tools. She combines a passion for creativity with academic rigor.</p>
-        </section>
+      </div>
 
-        <!-- Research Focus Section -->
-        <section id="research">
-            <h2>Research Focus</h2>
-            <p>Exploring the intersection of human data interaction, visual cognition, and technology to inform and improve research methodologies and measurement tools.</p>
-        </section>
+      <div id="wrapper">
+        <div id="scroller">
 
-        <!-- Projects & Publications Section -->
-        <section id="projects">
-            <h2>Projects & Publications</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <h3>Project 1</h3>
-                    <p>Description of Project 1.</p>
-                </div>
-                <div class="project-item">
-                    <h3>Publication 1</h3>
-                    <p>Description of Publication 1.</p>
-                </div>
-                <!-- Add more projects and publications as needed -->
+          <div class="lower">
+            <div class="navbar">
+              <i class="fa fa-diamond"></i>
+              <i class="fa fa-cloud-download"></i>
+              <i class="fa fa-bookmark"></i>
+              <i class="fa fa-heart"></i>
             </div>
-        </section>
+            <div class="square flex-center">image #1</div>
+            <div class="square flex-center">image #2</div>
+            <div class="square flex-center">image #3</div>
+            <div class="square flex-center">image #4</div>
+            <div class="square flex-center">image #5</div>
+          </div>
 
-        <!-- Experience Section -->
-        <section id="experience">
-            <h2>Experience</h2>
-            <p>Highlights of my professional journey, collaborations, and impactful research experiences.</p>
-        </section>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- Speaking Engagements Section -->
-        <section id="speaking">
-            <h2>Speaking Engagements</h2>
-            <p>Details of my experience as a speaker and upcoming events.</p>
-        </section>
+  <!-- Include jQuery (this should be linked from a CDN) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <!-- Contact & Networking Section -->
-        <section id="contact">
-            <h2>Contact & Networking</h2>
-            <p>Let's connect! Reach out for collaborations or explore my professional profiles below:</p>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/steffi-kohl">LinkedIn</a>
-                <form action="#" method="post">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-        </section>
-    </main>
+  <!-- Include IScroll (ensure the correct path if you have it locally) -->
+  <script src="js/iscroll.js"></script>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+  <!-- Link to your JavaScript file in the /js folder -->
+  <script src="js/script.js"></script>
 </body>
 </html>
