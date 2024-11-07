@@ -1,48 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Responsive Website Template</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Link to the compiled CSS -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Welcome to Our Website</h1>
-      <p>Your journey begins here.</p>
-      <a href="#content" class="scroll-down">Learn More</a>
-    </div>
-  </section>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Navigation Menu -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#" class="logo">Logo</a>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#content">About</a></li>
-        <li><a href="#footer">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #2c3e50;
+}
 
-  <!-- Main Content -->
-  <section id="content">
-    <div class="content-wrapper">
-      <h2>About Us</h2>
-      <p>This is where your main content goes.</p>
-    </div>
-  </section>
+#hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("hero-background.jpg") no-repeat center center/cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#hero .hero-content {
+  text-align: center;
+}
+#hero .hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+#hero .hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+#hero .hero-content .scroll-down {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+#hero .hero-content .scroll-down:hover {
+  background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
+}
 
-  <!-- Footer -->
-  <footer id="footer">
-    <p>&copy; 2023 Your Company. All rights reserved.</p>
-  </footer>
+#navbar {
+  width: 100%;
+  background: #fff;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+#navbar.sticky {
+  position: fixed;
+}
+#navbar .nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+#navbar .nav-container .logo {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  text-decoration: none;
+}
+#navbar .nav-container .nav-links {
+  list-style: none;
+  display: flex;
+}
+#navbar .nav-container .nav-links li {
+  margin-left: 1.5rem;
+}
+#navbar .nav-container .nav-links li a {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+#navbar .nav-container .nav-links li a:hover {
+  color: #3498db;
+}
 
-  <!-- Link to the JavaScript file -->
-  <script src="script.js"></script>
-</body>
-</html>
+#content {
+  padding: 4rem 1rem;
+}
+#content .content-wrapper {
+  max-width: 800px;
+  margin: auto;
+}
+#content .content-wrapper h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+#content .content-wrapper p {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#footer {
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+#footer p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  .nav-links {
+    flex-direction: column;
+  }
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
