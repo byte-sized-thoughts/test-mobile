@@ -1,42 +1,32 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // Initialize Locomotive Scroll
-  const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true
-  });
-
-  // Elements
-  const upper = document.querySelector('.upper');
-  const lowerNav = document.querySelector('.lower .navbar');
-  const fixedNav = document.querySelector('.navbar.fixed');
-  const menu = document.querySelector('.navbar.menu');
-  const bg = document.querySelector('.bg');
-  const menuHeight = menu.offsetHeight;
-  const upperHeight = upper.offsetHeight - menuHeight;
-
-  // Scroll Event
-  scroll.on('scroll', (instance) => {
-    const scrollTop = instance.scroll.y;
-
-    let scrollRatio = scrollTop / upperHeight;
-    if (scrollRatio > 1) scrollRatio = 1;
-
-    if (scrollTop > upperHeight - menuHeight) {
-      upper.classList.add('crop');
-      lowerNav.style.display = 'none';
-      fixedNav.style.display = 'block';
-    } else {
-      upper.classList.remove('crop');
-      lowerNav.style.display = 'block';
-      fixedNav.style.display = 'none';
-    }
-
-    // Adjust background opacity
-    bg.style.opacity = 1 - scrollRatio * 1.3;
-  });
-
-  // Refresh on window resize
-  window.addEventListener('resize', () => {
-    scroll.update();
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document
+      .querySelector(this.getAttribute('href'))
+      .scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+// Sticky Navigation
+const navbar = document.getElementById('navbar');
+const hero = document.getElementById('hero');
+const heroOptions = {
+  rootMargin: '-80px 0px 0px 0px',
+};
+
+const heroObserver = new IntersectionObserver(function (
+  entries,
+  heroObserver
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      navbar.classList.add('sticky');
+    } else {
+      navbar.classList.remove('sticky');
+    }
+  });
+},
+heroOptions);
+
+heroObserver.observe(hero);
